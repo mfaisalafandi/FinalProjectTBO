@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BAKITA - Bahasa Kita</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='fontawesome/css/all.min.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<header>
+			<div class="row">
+				<div class="col-lg-12">
+					<nav>
+						<ul>
+							<li class="logo"><a href="/">BAKITA - Bahasa Kita</a></li>
+							<li><a href="/#popular">Team</a></li>
+							<li><a href="/#categories">Fitur</a></li>
+							<li><a href="bahasa.html">Bahasa</a></li>
+							<li><a href="/">Home</a></li>
+						</ul>
+					</nav>
+				</div> <!-- col-lg-12 -->
+			</div> <!-- row -->
+		</header>
+		
+		<main>
+			<div class="bg-category" style="margin-top: 150px;">
+				<div class="wrap-center">
+					<div class="row">
+
+						<div class="col-lg-12">
+							<div class="title">
+								<h3>Cek Kalimat</h3>
+								<p>Kalimat apa yang ingin anda cek?</p>
+							</div> <!-- title -->
+						</div> <!-- col-lg-12 -->
+
+						<div class="col-lg-6 col-md-6">
+							<div>
+								<h2 style="margin-bottom: 5%;">Aturan CNF</h2>
+								{% for cnfa in list %}
+								<p>{{ cnfa[0] }} -> {{ cnfa[1] }}</p> <br>
+								{% endfor %}
+							</div> <!-- card-category -->
+						</div> <!-- col-lg-6 col-md-6 -->
+
+						<div class="col-lg-6 col-md-6">
+							<div class="col-lg-12">
+								<form action="" name="search" method="POST">
+									<div class="col-lg-8 col-sm-12">
+										<div class="input">
+											<input type="text" name="kalimat" placeholder="Kalimat apa yang ingin anda periksa?">
+										</div> <!-- input -->
+									</div> <!-- col-lg-4 -->
+									<div class="col-lg-4 col-md-12">
+										<div class="input">
+											<input type="submit" name="btn-submit" value="Cek Sekarang!">
+										</div> <!-- input -->
+									</div> <!-- col-lg-4 -->
+								</form>
+							</div>
+							<div class="col-lg-12" style="margin-left: 10px;">
+								{% if result == 1 %}
+									<p class="pop-success">Kalimat yang Bagus! Selamat</p>
+								{% elif result == -1 %}
+									<p class="pop-error">Kalimat Anda tidak Sesuai dengan Struktur Bahasa Indonesia!</p>
+								{% endif %}
+							</div>
+						</div> <!-- col-lg-6 col-md-6 -->
+						
+					</div> <!-- row -->
+				</div> <!-- wrap-center -->
+			</div> <!-- bg-category -->
+
+		</main>
+
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>
+						Copyright 2022 &copy; BAKITA - Kel 2 | D <br />
+						Design by <strong>Team Kelompok 2</strong>
+					</p>
+				</div> <!-- col-lg-12 -->
+			</div> <!-- row -->
+		</footer>
+
+	</div> <!-- container -->
+</body>
+</html>
