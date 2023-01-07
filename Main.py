@@ -3,7 +3,7 @@ from flask import request
 from flask import render_template
 import CNF as Mod_CNF;
 import CFG as Mod_CFG;
-    
+
 # Membuka file cnf.txt dan memasukkannya ke dalam variabel tipe list
 raw_cfg = Mod_CFG.open_file('cnf.txt')
 cnf = Mod_CFG.raw_to_cfg(raw_cfg)
@@ -18,9 +18,12 @@ def index():
 def bahasa():
     if (request.method == "POST") and (request.form["kalimat"] != ""):
         Obj_CNF = Mod_CNF.CNF(cnf, request.form["kalimat"].split(' '))
-        result = Obj_CNF.cek_result()
-        return render_template('bahasa.html', result=result, list=cnf)
+        result, table = Obj_CNF.cek_result()
+        if result == 1:
+            return render_template('bahasa.html', st=request.form["kalimat"], result=result, Rtable=table, std=request.form["kalimat"].split(' '))
+        else:
+            return render_template('bahasa.html', st=request.form["kalimat"], result=result, Rtable=0)
     else:
-        return render_template('bahasa.html', result=0, list=cnf)
+        return render_template('bahasa.html', st="", result=0, Rtable=0)
 
 app.run(debug=True)
