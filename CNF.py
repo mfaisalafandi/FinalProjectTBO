@@ -57,7 +57,7 @@ class CNF:
 
     # Mengisi baris dari tabel
     def iteration(self, row):
-        # perulangan menurun dari kolom yang dimaksud hingga bawah tabel
+        # perulangan menurun dari kolom yang ingin diisi
         for column in range(len(self.table) - 1, -1, -1):
             # Jika baris & kolom tersebut kosong
             if self.table[row][column] == set():
